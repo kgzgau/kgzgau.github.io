@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Karena's Portfolio</title>
+  <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles/main.css">
+</head>
+<body>
+  <div id="window">
+    <!-- Title Bar -->
+    <div id="title-bar">
+      <div id="dots">
+        <span class="dot red"></span>
+        <span class="dot yellow"></span>
+        <span class="dot green"></span>
+      </div>
+      <nav id="tabs">
+        <a href="#about" class="tab-link active">About</a>
+        <a href="#projects" class="tab-link">Projects</a>
+        <a href="#contact" class="tab-link">Contact</a>
+        <button id="theme-toggle">☀️</button>
+      </nav>
+    </div>
+
+    <!-- Main Panels -->
+    <div id="main">
+      <!-- Left: Terminal -->
+      <div id="left-panel">
+        <div id="output"></div>
+        <div id="input-line">
+          <span class="prompt" id="prompt"></span>
+          <input id="command-input" autocomplete="off" />
+        </div>
+      </div>
+
+      <!-- Right: Portfolio Content -->
+      <div id="right-panel">
+        <section id="welcome">
+          <pre id="welcome-animation"></pre>
+          <p id="terminal-instructions">Use the terminal to navigate: type <code>help</code> to begin, or click the tabs above.</p>
+        </section>
+
+        <section id="about" class="hidden">
+          <h2>About Me</h2>
+          <p>I'm Karena, a full-stack developer.</p>
+          <ul>
+            <li>JavaScript, React, Node.js</li>
+            <li>Swift, iOS Development</li>
+            <li>Python, ML Basics</li>
+          </ul>
+        </section>
+
+        <section id="projects" class="hidden">
+          <h2>Projects</h2>
+          <p><strong>Printf:</strong> Low-level terminal project for Mango Pi. Keyboard driver and C-style printf commands in Assembly.</p>
+          <p><strong>Malloc:</strong> Dynamic memory allocation module with forward coalescing.</p>
+          <p><strong>Console:</strong> Framebuffer project to write directly to a console.</p>
+          <p><strong>Meditation Buddy:</strong> Apple Watch-inspired meditation app tracking heart rate and movement.</p>
+        </section>
+
+        <section id="contact" class="hidden">
+          <h2>Contact</h2>
+          <p>Email: <a href="mailto:alex@example.com">alex@example.com</a></p>
+          <p>LinkedIn: <a href="https://linkedin.com/in/alex" target="_blank">linkedin.com/in/alex</a></p>
+          <p>GitHub: <a href="https://github.com/alex" target="_blank">github.com/alex</a></p>
+        </section>
+      </div>
+    </div>
+  </div>
+
+  <script src="scripts/portfolio.js"></script>
+</body>
+</html>
