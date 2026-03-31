@@ -8,6 +8,7 @@
 </head>
 <body>
   <div id="window">
+
     <!-- Title Bar -->
     <div id="title-bar">
       <div id="dots">
@@ -19,13 +20,12 @@
         <a href="#about" class="tab-link active">About</a>
         <a href="#projects" class="tab-link">Projects</a>
         <a href="#contact" class="tab-link">Contact</a>
-        <button id="theme-toggle">☀️</button>
       </nav>
     </div>
 
-    <!-- Main Panels -->
     <div id="main">
-      <!-- Left: Terminal -->
+
+      <!-- Terminal -->
       <div id="left-panel">
         <div id="output"></div>
         <div id="input-line">
@@ -34,37 +34,69 @@
         </div>
       </div>
 
-      <!-- Right: Portfolio Content -->
+      <!-- Content -->
       <div id="right-panel">
+
         <section id="welcome">
           <pre id="welcome-animation"></pre>
-          <p id="terminal-instructions">Use the terminal to navigate: type <code>help</code> to begin, or click the tabs above.</p>
+          <p>Type <code>help</code> or use tabs.</p>
         </section>
 
         <section id="about" class="hidden">
-          <h2>About Me</h2>
+          <h2>About</h2>
           <p>I'm Karena, a full-stack developer.</p>
-          <ul>
-            <li>JavaScript, React, Node.js</li>
-            <li>Swift, iOS Development</li>
-            <li>Python, ML Basics</li>
-          </ul>
         </section>
 
         <section id="projects" class="hidden">
           <h2>Projects</h2>
-          <p><strong>Printf:</strong> Low-level terminal project for Mango Pi. Keyboard driver and C-style printf commands in Assembly.</p>
-          <p><strong>Malloc:</strong> Dynamic memory allocation module with forward coalescing.</p>
-          <p><strong>Console:</strong> Framebuffer project to write directly to a console.</p>
-          <p><strong>Meditation Buddy:</strong> Apple Watch-inspired meditation app tracking heart rate and movement.</p>
+
+          <p><a href="#printf" class="project-link">Printf</a></p>
+          <p><a href="#malloc" class="project-link">Malloc</a></p>
+          <p><a href="#console" class="project-link">Console</a></p>
+          <p><a href="#meditationbuddy" class="project-link">Meditation Buddy</a></p>
+        </section>
+
+        <!-- Project Pages -->
+        <section id="printf" class="hidden project-page">
+          <h2>Printf</h2>
+          <p>Assembly-based printf implementation.</p>
+          <div class="project-gallery">
+            <img src="images/printf1.png">
+            <img src="images/printf2.png">
+          </div>
+        </section>
+
+        <section id="malloc" class="hidden project-page">
+          <h2>Malloc</h2>
+          <p>Custom memory allocator.</p>
+          <div class="project-gallery">
+            <img src="images/malloc1.png">
+          </div>
+        </section>
+
+        <section id="console" class="hidden project-page">
+          <h2>Console</h2>
+          <p>Framebuffer console output.</p>
+        </section>
+
+        <section id="meditationbuddy" class="hidden project-page">
+          <h2>Meditation Buddy</h2>
+          <p>
+            Apple Watch-inspired meditation app that tracks heart rate and movement
+            to guide breathing and relaxation.
+          </p>
+
+          <div class="project-gallery">
+            <img src="images/meditation1.jpg" alt="Meditation Buddy UI screen">
+            <img src="images/meditation2.jpg" alt="Meditation tracking visualization">
+          </div>
         </section>
 
         <section id="contact" class="hidden">
           <h2>Contact</h2>
-          <p>Email: <a href="mailto:alex@example.com">alex@example.com</a></p>
-          <p>LinkedIn: <a href="https://linkedin.com/in/alex" target="_blank">linkedin.com/in/alex</a></p>
-          <p>GitHub: <a href="https://github.com/alex" target="_blank">github.com/alex</a></p>
+          <p>Email: karena@example.com</p>
         </section>
+
       </div>
     </div>
   </div>
