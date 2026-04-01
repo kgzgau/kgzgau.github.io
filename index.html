@@ -36,34 +36,87 @@
 
       <!-- Right: Portfolio Content -->
       <div id="right-panel">
+        <!-- Welcome -->
         <section id="welcome">
           <pre id="welcome-animation"></pre>
-          <p id="terminal-instructions">Use the terminal to navigate: type <code>help</code> to begin, or click the tabs above.</p>
+          <p id="terminal-instructions">
+            Use the terminal to navigate: type <code>help</code> to begin, or click the tabs above.
+          </p>
         </section>
 
+        <!-- About -->
         <section id="about" class="hidden">
           <h2>About Me</h2>
-          <p>I'm Karena, a full-stack developer.</p>
+          <p>Hi, I'm Karena! I'm a sophomore at Stanford University, studying computer science with a focus on systems.</p>
+          <p>Outside of academics, I enjoy East Asian studies and history, drawing, and biking. I also love sightseeing and trying new foods wherever I go.</p>
+          <p>I have a soft spot for physical books over digital, adore the smell of rain, and have racked up over 150,000 hours on Spotify.</p>
+
+          <h3>Skills</h3>
           <ul>
-            <li>JavaScript, React, Node.js</li>
-            <li>Swift, iOS Development</li>
+            <li>C, MangoPi</li>
+            <li>JavaScript, Website Development</li>
             <li>Python, ML Basics</li>
+          </ul>
+
+          <h3>Favorite Books</h3>
+          <ul>
+            <li><em>Tuesdays with Morrie</em> by Mitch Albom (2026 edition)</li>
+            <li><em>The Elimination</em> by Rithy Panh & Christophe Bataille</li>
           </ul>
         </section>
 
+        <!-- Projects overview -->
         <section id="projects" class="hidden">
           <h2>Projects</h2>
-          <p><strong>Printf:</strong> Low-level terminal project for Mango Pi. Keyboard driver and C-style printf commands in Assembly.</p>
-          <p><strong>Malloc:</strong> Dynamic memory allocation module with forward coalescing.</p>
-          <p><strong>Console:</strong> Framebuffer project to write directly to a console.</p>
-          <p><strong>Meditation Buddy:</strong> Apple Watch-inspired meditation app tracking heart rate and movement.</p>
+          <p>
+            <strong>Printf:</strong> Low-level terminal project for Mango Pi.
+            <a href="#" onclick="linkToProject('Printf')">Open →</a>
+          </p>
+          <p>
+            <strong>Malloc:</strong> Dynamic memory allocation module with forward coalescing.
+            <a href="#" onclick="linkToProject('Malloc')">Open →</a>
+          </p>
+          <p>
+            <strong>Console:</strong> Framebuffer project to write directly to a console.
+            <a href="#" onclick="linkToProject('Console')">Open →</a>
+          </p>
+          <p>
+            <strong>Meditation Buddy:</strong> Apple Watch-inspired meditation app tracking heart rate and movement.
+            <a href="#" onclick="linkToProject('MeditationBuddy')">Open →</a>
+          </p>
         </section>
 
+        <!-- Individual project sections -->
+        <section id="Printf" class="hidden">
+          <h3>Printf</h3>
+          <p>Low-level terminal project for Mango Pi. Keyboard driver and C-style printf commands in Assembly.</p>
+        </section>
+
+        <section id="Malloc" class="hidden">
+          <h3>Malloc</h3>
+          <p>Dynamic memory allocation module with forward coalescing.</p>
+        </section>
+
+        <section id="Console" class="hidden">
+          <h3>Console</h3>
+          <p>Framebuffer project to write directly to a console.</p>
+        </section>
+
+        <section id="MeditationBuddy" class="hidden">
+          <h3>Meditation Buddy</h3>
+          <p>Apple Watch-inspired meditation app tracking heart rate and movement. Flower petals, sensors, wires – a work in progress.</p>
+          <div style="display: flex; gap: 20px; flex-wrap: wrap;">
+            <img src="images/meditation1.jpg" alt="Meditation Buddy Screenshot 1" style="max-width: 300px; border-radius: 10px;">
+            <img src="images/meditation2.jpg" alt="Meditation Buddy Screenshot 2" style="max-width: 300px; border-radius: 10px;">
+          </div>
+        </section>
+
+        <!-- Contact -->
         <section id="contact" class="hidden">
           <h2>Contact</h2>
-          <p>Email: <a href="mailto:alex@example.com">alex@example.com</a></p>
-          <p>LinkedIn: <a href="https://linkedin.com/in/alex" target="_blank">linkedin.com/in/alex</a></p>
-          <p>GitHub: <a href="https://github.com/alex" target="_blank">github.com/alex</a></p>
+          <p>Email: <a href="mailto:kgau248@gmail.com">kgau248@gmail.com</a></p>
+          <p>LinkedIn: <a href="https://linkedin.com/in/karena-gau" target="_blank">linkedin.com/in/karena-gau</a></p>
+          <p>GitHub: <a href="https://github.com/kgzgau" target="_blank">github.com/kgzgau</a></p>
         </section>
       </div>
     </div>

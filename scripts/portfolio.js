@@ -22,6 +22,22 @@ function showSection(id) {
   });
 }
 
+//dark/light mode
+// -----------------------------
+// Theme Toggle
+// -----------------------------
+const themeToggle = document.getElementById("theme-toggle");
+themeToggle.addEventListener("click", () => {
+  document.body.classList.toggle("light-mode");
+  
+  // Update icon
+  if (document.body.classList.contains("light-mode")) {
+    themeToggle.textContent = "🌙"; // switch to dark mode icon
+  } else {
+    themeToggle.textContent = "☀️"; // switch to light mode icon
+  }
+});
+
 // Strip HTML for terminal cat command
 function stripHTML(html) {
   const div = document.createElement("div");
@@ -33,37 +49,32 @@ function stripHTML(html) {
 // Terminal Commands
 // -----------------------------
 const Commands = {
-  help: (term) => {
-    term.print("> Available: ls, cd <dir>, cat, pwd, skills, clear, whoami");
-  },
+  help: (term) => term.print("> Available: ls, cd <dir>, cat, pwd, skills, clear, whoami"),
 
   ls: (term) => {
     let output = "";
-    if (currentSection === "welcome") {
-      output = sections.join("    ");
-    } else if (currentSection === "about") {
-      output = "about.txt";
-    } else if (currentSection === "projects") {
-      output = projectFiles.join("    ");
-    } else if (currentSection === "contact") {
-      output = "contact.txt";
-    } else if (projectFiles.includes(currentSection)) {
-      output = "README.txt";
-    }
+    if (currentSection === "welcome") output = sections.join("    ");
+    else if (currentSection === "about") output = "about.txt";
+    else if (currentSection === "projects") output = projectFiles.join("    ");
+    else if (currentSection === "contact") output = "contact.txt";
+    else if (projectFiles.map(p => p.toLowerCase()).includes(currentSection.toLowerCase())) output = "README.txt";
     term.print("> " + output);
   },
 
   cd: (term, args) => {
     if (!args[0]) return term.print("> usage: cd <dir>");
-
     const dir = args[0];
 
     if (dir === "..") {
-      showSection("welcome");
-      return term.print("> moved to home");
+      if (projectFiles.map(p => p.toLowerCase()).includes(currentSection.toLowerCase())) {
+        showSection("projects");
+        return term.print("> moved to /projects");
+      } else {
+        showSection("welcome");
+        return term.print("> moved to home");
+      }
     }
 
-    // Contextual navigation
     const context = {
       welcome: sections,
       projects: projectFiles,
@@ -76,7 +87,7 @@ const Commands = {
     };
 
     if (context[currentSection]?.includes(dir)) {
-      showSection(dir.toLowerCase()); // lowercase mapping for right panel
+      showSection(dir);
       return term.print(`> changed to /${dir}`);
     }
 
@@ -84,41 +95,34 @@ const Commands = {
   },
 
   pwd: (term) => {
-    const dir = currentSection === "welcome" ? "~" : currentSection;
-    term.print(`> /${dir}`);
+    let dir;
+    if (currentSection === "welcome") dir = "~";
+    else if (projectFiles.map(p => p.toLowerCase()).includes(currentSection.toLowerCase())) dir = `/projects/${currentSection}`;
+    else dir = `/${currentSection}`;
+    term.print(`> ${dir}`);
   },
 
   cat: (term, args) => {
-    const section = args[0] || currentSection;
+    let section = args[0] || currentSection;
+    const matchProject = projectFiles.find(p => p.toLowerCase() === section.toLowerCase());
+    if (matchProject) section = matchProject;
 
     if (section === "welcome") return term.print("> No file to read here.");
-    if (!sections.includes(section)) {
-      if (!projectFiles.includes(section)) return term.print("> file not found");
-    }
+    if (!sections.includes(section.toLowerCase()) && !projectFiles.includes(section)) 
+      return term.print("> file not found");
 
-    const content = stripHTML(
-      document.getElementById(section.toLowerCase())?.innerHTML || `File: ${section}`
-    );
+    const content = stripHTML(document.getElementById(section)?.innerHTML || `File: ${section}`);
     term.print(`> opening ${section} → see right panel`);
-    showSection(section.toLowerCase());
+    showSection(section);
   },
 
   skills: (term) => {
-    const skillsList = [
-      "JavaScript, React, Node.js",
-      "Swift, iOS Development",
-      "Python, ML Basics"
-    ];
+    const skillsList = ["JavaScript, React, Node.js","Swift, iOS Development","Python, ML Basics"];
     term.print("> Skills:\n" + skillsList.join("\n"));
   },
 
-  whoami: (term) => {
-    term.print("> Karena - Full Stack Developer");
-  },
-
-  clear: (term) => {
-    term.output.innerHTML = "";
-  }
+  whoami: (term) => term.print("> Karena - Full Stack Developer"),
+  clear: (term) => term.output.innerHTML = ""
 };
 
 // -----------------------------
@@ -228,6 +232,13 @@ document.querySelectorAll("#tabs .tab-link").forEach(link => {
     showSection(id);
   });
 });
+
+// -----------------------------
+// Helper for clickable project links
+// -----------------------------
+function linkToProject(projectId) {
+  showSection(projectId); // same content as cd
+}
 
 // -----------------------------
 // Initialize
