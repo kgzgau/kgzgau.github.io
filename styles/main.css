@@ -185,8 +185,9 @@ body {
 ----------------------------- */
 #welcome-animation {
   font-weight: bold;
-  font-size: 1.3em;
+  font-size: 2em; /* make default font bigger */
   white-space: pre;
+  text-align: center;
 }
 
 #terminal-instructions {

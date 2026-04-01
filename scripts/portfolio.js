@@ -12,6 +12,7 @@ function showSection(id) {
   document.querySelectorAll("#right-panel section").forEach(sec => {
     sec.classList.add("hidden");
   });
+
   const target = document.getElementById(id);
   if (target) target.classList.remove("hidden");
   currentSection = id;
@@ -22,14 +23,13 @@ function showSection(id) {
   });
 }
 
-//dark/light mode
 // -----------------------------
-// Theme Toggle
+// Theme Toggle (Dark/Light Mode)
 // -----------------------------
 const themeToggle = document.getElementById("theme-toggle");
 themeToggle.addEventListener("click", () => {
   document.body.classList.toggle("light-mode");
-  
+
   // Update icon
   if (document.body.classList.contains("light-mode")) {
     themeToggle.textContent = "🌙"; // switch to dark mode icon
@@ -38,7 +38,9 @@ themeToggle.addEventListener("click", () => {
   }
 });
 
-// Strip HTML for terminal cat command
+// -----------------------------
+// Strip HTML for terminal `cat` command
+// -----------------------------
 function stripHTML(html) {
   const div = document.createElement("div");
   div.innerHTML = html;
@@ -53,11 +55,14 @@ const Commands = {
 
   ls: (term) => {
     let output = "";
+
     if (currentSection === "welcome") output = sections.join("    ");
     else if (currentSection === "about") output = "about.txt";
     else if (currentSection === "projects") output = projectFiles.join("    ");
     else if (currentSection === "contact") output = "contact.txt";
-    else if (projectFiles.map(p => p.toLowerCase()).includes(currentSection.toLowerCase())) output = "README.txt";
+    else if (projectFiles.map(p => p.toLowerCase()).includes(currentSection.toLowerCase()))
+      output = "README.txt";
+
     term.print("> " + output);
   },
 
@@ -97,8 +102,10 @@ const Commands = {
   pwd: (term) => {
     let dir;
     if (currentSection === "welcome") dir = "~";
-    else if (projectFiles.map(p => p.toLowerCase()).includes(currentSection.toLowerCase())) dir = `/projects/${currentSection}`;
+    else if (projectFiles.map(p => p.toLowerCase()).includes(currentSection.toLowerCase()))
+      dir = `/projects/${currentSection}`;
     else dir = `/${currentSection}`;
+
     term.print(`> ${dir}`);
   },
 
@@ -108,7 +115,7 @@ const Commands = {
     if (matchProject) section = matchProject;
 
     if (section === "welcome") return term.print("> No file to read here.");
-    if (!sections.includes(section.toLowerCase()) && !projectFiles.includes(section)) 
+    if (!sections.includes(section.toLowerCase()) && !projectFiles.includes(section))
       return term.print("> file not found");
 
     const content = stripHTML(document.getElementById(section)?.innerHTML || `File: ${section}`);
@@ -117,7 +124,11 @@ const Commands = {
   },
 
   skills: (term) => {
-    const skillsList = ["JavaScript, React, Node.js","Swift, iOS Development","Python, ML Basics"];
+    const skillsList = [
+      "JavaScript, React, Node.js",
+      "Swift, iOS Development",
+      "Python, ML Basics"
+    ];
     term.print("> Skills:\n" + skillsList.join("\n"));
   },
 
@@ -173,8 +184,9 @@ const Terminal = {
   typeWelcome() {
     const target = document.getElementById("welcome-animation");
     const lines = [
-      { text: "hello", backspace: true, delay: 300 },
+      { text: "Hello", backspace: true, delay: 300 },
       { text: "你好", backspace: true, delay: 300 },
+      { text: "សួស្តី", backspace: true, delay: 300 },
       { text: "I'm Karena", backspace: false, delay: 300 }
     ];
 
@@ -237,7 +249,7 @@ document.querySelectorAll("#tabs .tab-link").forEach(link => {
 // Helper for clickable project links
 // -----------------------------
 function linkToProject(projectId) {
-  showSection(projectId); // same content as cd
+  showSection(projectId); // same content as `cd`
 }
 
 // -----------------------------
